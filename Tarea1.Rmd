@@ -1,0 +1,45 @@
+---
+title: "Tarea 1"
+author: "Marilyn Salcedo"
+date: "2/26/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Crear un identificador de nombre "ciudad" y asigne como valor el nombre de alguna ciudad
+```{r}
+ciudad<-"Bogotá"
+```
+## Crear un identificador de nombre "pais_andes" y asigne como valor los nombres de los países por donde cruza la cordillera de Los Andes
+
+```{r}
+pais_andes<-c("Ecuador","Colombia","Peru","Argentina","Chile","Venezuela","Bolivia")
+```
+## Crear un dataframe con 12 eventos (files) y 5 variables (columnas), cada columna debe tener diferentes tipos de datos (entero, decimal, caracter, logico)
+```{r}
+especies<-c("V.odorata","V.x tahitensis","V.planifolia","V.pompona","V.abundiflora")
+especies<-sample(especies,12,replace=TRUE)
+vainillol=sample(0:100,12, replace=TRUE)
+etanol=sample(0:10/100,12,replace=TRUE)
+contaminacion=sample(c(TRUE,FALSE),12,replace=TRUE)
+calidad<-as.factor(c("excelente","bueno","regular","malo"))
+calidad<-sample(calidad,12,replace=TRUE)
+data=data.frame(especies,vainillol,etanol,contaminacion,calidad)
+data
+```
+## Cargue el dataset "DNase" e identifique su estructura. Extraiga (subset) los datos que cumplan con las condiciones de:
+
+1. "conc" (concentracion) entre 0.1 y 0.2
+
+```{r}
+subset(DNase,conc>0.1&conc<0.2)
+```
+
+2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+
+```{r}
+subset(DNase,Run!=2&conc>0.2&density<=1)
+```
